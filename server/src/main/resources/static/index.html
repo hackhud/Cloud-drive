@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cloud Drive</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="login-view" class="card login">
+    <h1>Cloud Drive</h1>
+    <form id="login-form">
+        <label>Логін <input id="username" autocomplete="username" required></label>
+        <label>Пароль <input id="password" type="password" autocomplete="current-password" required></label>
+        <div class="row">
+            <button type="submit">Увійти</button>
+            <button type="button" id="register">Зареєструватися</button>
+        </div>
+        <p id="login-error" class="error"></p>
+    </form>
+</section>
+
+<section id="drive-view" hidden>
+    <header class="toolbar">
+        <strong>Cloud Drive</strong>
+        <button id="upload-btn">Завантажити…</button>
+        <input id="file-input" type="file" multiple hidden>
+        <button id="download-btn">Скачати</button>
+        <button id="delete-btn">Видалити</button>
+        <button id="refresh-btn">Оновити</button>
+        <label>Сортування
+            <select id="order">
+                <option value="none">Без сортування</option>
+                <option value="asc">Дата зміни ↑</option>
+                <option value="desc">Дата зміни ↓</option>
+            </select>
+        </label>
+        <label>Фільтр
+            <select id="filter">
+                <option value="all">Усі файли</option>
+                <option value="kt_jpg">.kt, .jpg</option>
+            </select>
+        </label>
+        <details class="columns">
+            <summary>Стовпці</summary>
+            <div id="column-toggles"></div>
+        </details>
+        <button id="sync-btn">Синхронізувати папку…</button>
+        <span class="spacer"></span>
+        <span id="user-label"></span>
+        <button id="logout-btn">Вийти</button>
+    </header>
+    <main class="content">
+        <div id="drop-zone" class="table-wrap">
+            <table>
+                <thead><tr id="head-row"></tr></thead>
+                <tbody id="rows"></tbody>
+            </table>
+            <p id="empty" class="hint">Файлів немає. Перетягніть файли сюди, щоб завантажити.</p>
+        </div>
+        <aside id="preview" class="preview">
+            <p class="hint">Оберіть файл, щоб переглянути вміст (.html як текст, .png як зображення)</p>
+        </aside>
+    </main>
+    <footer id="status"></footer>
+</section>
+<script src="app.js"></script>
+</body>
+</html>
